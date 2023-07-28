@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Web Scraping App</title>
+</head>
+<body>
+  <h1>Web Scraping App</h1>
+  <input type="text" id="searchQuery" placeholder="Enter your search query">
+  <button onclick="scrapeAndShow()">Scrape and Show</button>
+  <div id="resultContainer"></div>
+
+  <script>
+    async function scrapeAndShow() {
+      const searchQuery = document.getElementById('searchQuery').value;
+      if (!searchQuery) return;
+
+      const response = await fetch('/scrape', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: searchQuery }),
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error('Error:', errorMessage);
+        return;
+      }
+
+      const scrapedTexts = await response.json();
+      const resultContainer = document.getElementById('resultContainer');
+      resultContainer.innerHTML = '';
+
+      scrapedTexts.forEach((text, index) => {
+        const pTag = document.createElement('p');
+        pTag.textContent = `URL ${index + 1}: ${text}`;
+        resultContainer.appendChild(pTag);
+      });
+    }
+  </script>
+</body>
+</html>

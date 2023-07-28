@@ -1,0 +1,27 @@
+{
+  "name": "es6features",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@googleapis/customsearch": "^1.0.0",
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
+    "domino": "^2.1.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "googleapis": "^122.0.0",
+    "jsdom": "^22.1.0",
+    "puppeteer": "^20.9.0",
+    "request": "^2.88.2",
+    "scrapingbee": "^1.7.4"
+  }
+}
